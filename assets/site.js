@@ -1,7 +1,7 @@
 /* Shared logic for the client site. Catalog data lives in data.js (rewritten every morning from the internal tracker). */
 const SITE = {name: "InvestCar", word: "Invest", tld: "Car"};
 const SELLERS = {
-  main: {city: "", name: "InvestCar", person: "Дмитрий", phone: "+7 952 821-52-49", whatsapp: "+79528215249", telegram: "+79528215249"}
+  main: {city: "", name: "InvestCar", person: "Дмитрий", phone: "+7 928 291-61-28", whatsapp: "+79282916128", telegram: "+79282916128"}
 };
 const GROUPS = [
   {k: "stock", t: "В наличии", d: "Можно посмотреть и забрать", pill: "p-stock", stages: ["moscow", "site"]},
