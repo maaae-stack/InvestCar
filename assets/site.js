@@ -161,3 +161,7 @@ function frame(){
   if (f) f.innerHTML = Object.values(SELLERS).map(s => `<div><h3>${esc(s.city || "Контакты")}</h3><p>${esc(s.person)}, ${esc(s.name)}</p><p><a class="tel num" href="tel:${digits(s.phone).replace(/^/, "+")}">${esc(s.phone)}</a></p><p>WhatsApp и Telegram на этом же номере</p></div>`).join("");
   const u = document.getElementById("updated"); if (u) u.textContent = updatedLine();
 }
+
+/* Photos close to the 4:3 frame (incl. square) fill it; tall or very wide ones are shown whole on a plain background */
+function fitPhoto(img){ const r = img.naturalWidth / img.naturalHeight; if (r >= 0.95 && r <= 1.55) img.classList.add("fill"); }
+document.addEventListener("load", e => { const t = e.target; if (t && t.tagName === "IMG" && t.closest(".gal")) fitPhoto(t); }, true);
