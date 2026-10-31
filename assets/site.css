@@ -4,7 +4,7 @@
   --spruce:#18222f; --spruce-2:#243245; --sand:#e3b35b; --sand-ink:#7a5a1c;
   --signal:#2b6fd6; --signal-ink:#ffffff;
   --ok:#2e7d4f; --ok-soft:#dcefe2; --road:#2f6c96; --road-soft:#dbe8f2; --made:#6f55a0; --made-soft:#e8e1f3; --order:#5f6a63; --order-soft:#e4e8e2; --res:#9a4f16; --res-soft:#f5e4d4;
-  --f-head:"Oswald","Arial Narrow",system-ui,sans-serif; --f-body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-head:"Montserrat",system-ui,sans-serif; --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
@@ -257,7 +257,7 @@ footer [data-sitename]{font-size:28px}
 .payfull p{margin:6px 0 0;color:var(--fog)}
 
 .desc{max-width:72ch;margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}
-.desc h2{font-family:Oswald,sans-serif;font-weight:600;font-size:26px;margin:0 0 14px}
+.desc h2{font-family:var(--f-head);font-weight:600;font-size:26px;margin:0 0 14px}
 .desc p{margin:0 0 14px;font-size:16px;line-height:1.6;color:var(--ink)}
 .desc p b{font-weight:700}
 
@@ -295,3 +295,7 @@ footer [data-sitename]{font-size:28px}
 @media (max-width:440px){.calc-usd{font-size:40px}.calc-in,.calc-out{padding:18px}}
 .calc-src{margin:0;font-size:15px;color:var(--ink)}
 .calc-src a{white-space:nowrap;color:var(--signal);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* Montserrat + Inter (31.10.2026) */
+h1,h2,h3,.card h4,.desc h2{letter-spacing:-.015em;font-weight:700}
+.hero h1{font-size:clamp(30px,5vw,54px);max-width:18ch}
