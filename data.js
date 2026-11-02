@@ -2,9 +2,9 @@
 /*DATA-START*/const DATA = {
  "rate": 82.21,
  "rubMarkup": 1.65,
- "rateDate": "2026-11-01",
+ "rateDate": "2026-11-02",
  "epsmRub": 166000.0,
- "updated": "2026-11-01T13:48:44+03:00",
+ "updated": "2026-11-02T14:42:52+03:00",
  "items": [
   {
    "id": "example-2",
