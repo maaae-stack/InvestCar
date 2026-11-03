@@ -4,7 +4,7 @@ const SELLERS = {
   main: {city: "", name: "InvestCar", person: "Дмитрий", phone: "+7 928 291-61-28", whatsapp: "+79282916128", telegram: "+79282916128"}
 };
 const GROUPS = [
-  {k: "stock", t: "В наличии", d: "Можно посмотреть и забрать", pill: "p-stock", stages: ["moscow", "site"]},
+  {k: "stock", t: "В наличии в РФ", d: "Можно посмотреть и забрать", pill: "p-stock", stages: ["moscow", "site"]},
   {k: "road",  t: "В пути", d: "Едет в Москву", pill: "p-road", stages: ["air", "bishkek", "road"]},
   {k: "ready", t: "Выкуплено", d: "Уже наше, готовится к отправке из Канады", pill: "p-road", stages: ["deposit", "bought"]},
   {k: "made",  t: "В производстве", d: "Заказано у завода, можно забронировать", pill: "p-made", stages: ["preorder"]},
@@ -52,13 +52,13 @@ function descHtml(it){
 }
 function yearStr(it){ return Number(it.year) > new Date().getFullYear() ? "Новая модель " + it.year + " года" : String(it.year || ""); }
 function eta(it){
-  if (it.stage === "moscow" || it.stage === "site") return "уже в Москве";
+  if (it.stage === "moscow" || it.stage === "site") return "в наличии в РФ";
   if (it.etaText) return it.etaText;
   if (!it.eta) return it.stage === "offer" ? "уточним при заказе" : "уточняется";
   const [y, m, d] = it.eta.split("-").map(Number);
   return (d <= 10 ? "начало " : d <= 20 ? "середина " : "конец ") + MONTHS[m - 1] + " " + y;
 }
-function where(it){ return (it.stage === "site" || it.stage === "moscow") ? "Москва" : ""; }
+function where(it){ return it.stage === "site" ? "Москва" : it.stage === "moscow" ? "Россия" : ""; }
 function groupOf(it){ return GROUPS.find(g => g.stages.includes(it.stage)) || GROUPS[GROUPS.length - 1]; }
 
 /* Identical preorders/offers are shown as one model with a quantity. Each group keeps the id of its first unit. */
