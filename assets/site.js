@@ -175,6 +175,11 @@ document.addEventListener("load", e => { const t = e.target; if (t && t.tagName 
   const inp = document.getElementById("calcPrice"), outU = document.getElementById("calcUsd"), outR = document.getElementById("calcRub"), ask = document.getElementById("calcAsk");
   const num = v => { const x = parseFloat(String(v || "").replace(/\s/g, "").replace(",", ".")); return isFinite(x) ? x : 0; };
   function total(price){
+    if (T === "m"){
+      const M = Object.assign({tax: 15, yul: 1500, air: 3100, ab: 650, cust: 2500, mk: 3000}, C.moto || {});
+      const cost = price * (1 + M.tax / 100) / C.buy + M.yul / C.airR + M.air / C.airR + M.ab + M.cust;
+      return Math.ceil((cost + M.mk) / 100) * 100;
+    }
     const buy = price * (1 + (P === "p" ? C.taxP : C.taxD) / 100) / C.buy;
     const air = (T === "s" ? C.airS : C.airQ) / C.airR, yul = C.yul / C.airR, ab = T === "s" ? C.abS : C.abQ;
     const fin = buy + yul + air + ab;
@@ -191,13 +196,13 @@ document.addEventListener("load", e => { const t = e.target; if (t && t.tagName 
   }
   function seg(attr, val){ box.querySelectorAll(`[${attr}]`).forEach(b => b.setAttribute("aria-checked", String(b.getAttribute(attr) === val))); }
   box.addEventListener("click", e => {
-    const t = e.target.closest("[data-ctype]"); if (t){ T = t.dataset.ctype; seg("data-ctype", T); calc(); return; }
+    const t = e.target.closest("[data-ctype]"); if (t){ T = t.dataset.ctype; seg("data-ctype", T); const a = document.getElementById("calcSrc"); if (a) a.href = T === "m" ? "https://www.shoparide.ca/en/motorcycle/?region=montreal" : "https://www.shoparide.ca/en/snowmobile/?region=montreal"; calc(); return; }
     const s = e.target.closest("[data-cseller]"); if (s){ P = s.dataset.cseller; seg("data-cseller", P); calc(); }
   });
   inp.addEventListener("input", calc);
   inp.addEventListener("blur", () => { const p = num(inp.value); if (p) inp.value = fmt(p); });
   ask.addEventListener("click", () => {
-    const p = num(inp.value), kind = T === "s" ? "снегоход" : "квадроцикл";
+    const p = num(inp.value), kind = T === "s" ? "снегоход" : T === "m" ? "мотоцикл" : "квадроцикл";
     const text = "Здравствуйте! Посчитал на сайте " + kind + " за " + fmt(p) + " C$ (" + (P === "p" ? "у частного лица" : "у дилера") + "), вышло " + outU.textContent + ". Хочу узнать точную цену, пришлю ссылку на объявление.";
     openSheet("Точная цена", kind[0].toUpperCase() + kind.slice(1) + ", " + outU.textContent, text);
   });
