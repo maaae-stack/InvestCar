@@ -212,7 +212,7 @@ document.addEventListener("load", e => { const t = e.target; if (t && t.tagName 
 (function(){
   const box = document.getElementById("used");
   if (typeof USED === "undefined" || !box || !USED.items || !USED.items.length) return;
-  const C = DATA.calc || {}, R = Object.assign({tax: 15, taxPriv: 10, yul: 1500, air: 4150, ab: 650, cust: 3000, mk: 1000}, USED.calc || {});
+  const C = DATA.calc || {}, R = Object.assign({tax: 15, taxPriv: 10, yul: 1500, air: 4150, ab: 650, cust: 3000, mk: 2000}, USED.calc || {});
   const buy = C.buy || 1.42, airR = C.airR || 1.42;
   const total = (p, priv) => Math.ceil((p * (1 + (priv ? R.taxPriv : R.tax) / 100) / buy + R.yul / airR + R.air / airR + R.ab + R.cust + R.mk) / 100) * 100;
   const KIND = {tour: "Туристический", mount: "Горный", sport: "Спортивный", cross: "Кроссовер", util: "Утилитарный"};
