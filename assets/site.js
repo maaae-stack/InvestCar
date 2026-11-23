@@ -58,7 +58,7 @@ function eta(it){
   const [y, m, d] = it.eta.split("-").map(Number);
   return (d <= 10 ? "начало " : d <= 20 ? "середина " : "конец ") + MONTHS[m - 1] + " " + y;
 }
-function where(it){ return it.stage === "site" ? "Москва" : it.stage === "moscow" ? "Россия" : ""; }
+function where(it){ return (it.stage === "site" || it.stage === "moscow") ? "В наличии в РФ" : ""; }
 function groupOf(it){ return GROUPS.find(g => g.stages.includes(it.stage)) || GROUPS[GROUPS.length - 1]; }
 
 /* Identical preorders/offers are shown as one model with a quantity. Each group keeps the id of its first unit. */

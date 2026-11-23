@@ -17,7 +17,7 @@
    "price": 25450,
    "eta": "2026-11-03",
    "etaText": "",
-   "dest": "tver",
+   "dest": "",
    "reserved": false,
    "imgs": [
     "img/xmr-002990-1.jpg",
@@ -46,7 +46,7 @@
    "price": 25450,
    "eta": "2026-11-03",
    "etaText": "",
-   "dest": "pskov",
+   "dest": "",
    "reserved": false,
    "imgs": [
     "img/xmr-skoro-1.jpg",
@@ -393,7 +393,7 @@
    "price": 30900,
    "eta": "2026-11-03",
    "etaText": "",
-   "dest": "pskov",
+   "dest": "",
    "reserved": false,
    "imgs": [
     "img/max-ltd-2027-b-1.jpg",
